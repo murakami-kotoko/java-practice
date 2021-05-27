@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=dvice-width,initial-scale=1.0">
+    <title>自己紹介サイト</title>
+    <style>
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("C:/Users/村上/Desktop/practice/jstest/005stockphoto_TP_V4.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position:50% 50%;
+            background-size: cover;
+        }
+        .pege-top {
+            background: rgba(139,0,0,0.3);
+	        text-align: left;
+            color: floralwhite;
+            font-size: 60px;
+            padding-left: 40px;
+        }
+        .footer {
+            background: rgba(255,255,255,0.3);
+            color: black;
+            font-size: 30px;
+            text-align: right;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        #tabcontrol a {
+            display: inline-block;            
+            border-width: 1px 1px 0px 1px;   
+            border-style: solid;            
+            border-color: black;            
+            border-radius: 0.75em 0.75em 0 0; 
+            margin-top: 50px;
+            padding: 0.75em 1em;              
+            text-decoration: none;         
+            color: black;                  
+            font-weight: bold;
+            background-color: white;              
+            position: relative;        
+        }
+        #tabbody div {
+            border: 1px solid black;
+            font-size: 25px;
+            height: 80%;
+            margin-top: -1px;
+            padding: 10px;         
+            position: relative;
+            background-color: white;     
+            z-index: 0;             
+        }
+        #tabcontrol a:nth-child(1), #tabbody div:nth-child(1) { background-color: rgba(139,0,0,0.3); }
+        #tabcontrol a:nth-child(2), #tabbody div:nth-child(2) { background-color: rgba(220,20,60,0.3); }
+        #tabcontrol a:nth-child(3), #tabbody div:nth-child(3) { background-color: rgba(225,225,225,0.3); }
+    </style>
+</head>
+<body> 
+    <div class="pege-top">Kotoko Murakami</div>
+    <p id="tabcontrol">
+        <a href="#profile">PROFILE</a>
+        <a href="#career">経歴</a>
+        <a href="#hoby">趣味・特技</a>
+     </p>
+    <div id="tabbody">
+        <div id="profile">
+            <p>名前：村上琴子</p>
+            <p>生年月日：1998年9月24日</p>
+            <p>出身地：広島県 尾道市 因島</p>
+            <p>所属：フォース株式会社</p>
+        </div>
+        <div id="career">
+            <p>2014年4月 尾道高等学校 入学</p>
+            <p>2017年3月 尾道高等学校 卒業</p>
+            <p>2017年4月 武蔵野大学 入学</p>
+            <p>2021年3月 武蔵野大学 卒業</p>
+            <p>2021年4月 フォース株式会社 入社</p>
+        </div>
+        <div id="hoby">
+            <p>趣味：アニメ・漫画・ゲーム(TRPG)</p>
+            <p>特技：絵(クリップスタジオ)</p>
+        </div>
+    </div>
+    <div class="footer">mail:kotoko.murakami@force-corp.co.jp</div>
+    <script type="text/javascript">
+        var tabs = document.getElementById('tabcontrol').getElementsByTagName('a');
+        var pages = document.getElementById('tabbody').getElementsByTagName('div');
+        function changeTab() {
+            var targetid = this.href.substring(this.href.indexOf('#')+1,this.href.length);
+            for(var i=0; i<pages.length; i++) {
+                if( pages[i].id != targetid ) {
+                    pages[i].style.display = "none";
+                }
+                else {
+                    pages[i].style.display = "block";
+                }
+            }
+            for(var i=0; i<tabs.length; i++) {
+                tabs[i].style.zIndex = "0";
+            }
+            this.style.zIndex = "10";
+            return false;
+        }
+        for(var i=0; i<tabs.length; i++) {
+           tabs[i].onclick = changeTab;
+        }
+        tabs[0].onclick();
+        </script>
+</body>
+</html>
